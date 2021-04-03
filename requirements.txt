@@ -1,0 +1,11 @@
+docx2txt==0.8 \
+    --hash=sha256:2c06d98d7cfe2d3947e5760a57d924e3ff07745b379c8737723922e7009236e5
+inflection==0.5.1; python_version >= "3.5" \
+    --hash=sha256:f38b2b640938a4f35ade69ac3d053042959b62a0f1076a5bbaa1b9526605a8a2 \
+    --hash=sha256:1a29730d366e996aaacffb2f1f1cb9593dc38e2ddd30c91250c6dde09ea9b417
+profanityfilter==2.0.6 \
+    --hash=sha256:1706c080c2364f5bfe217b2330dc35d90e02e4afa0a00ed52d5673c410b45b64 \
+    --hash=sha256:ca701e22799526696963415fc36d5e943c168f1917e3c83881ffda6bf5240a30
+tqdm==4.59.0; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.4.0") \
+    --hash=sha256:9fdf349068d047d4cfbe24862c425883af1db29bcddf4b0eeb2524f6fbdb23c7 \
+    --hash=sha256:d666ae29164da3e517fcf125e41d4fe96e5bb375cd87ff9763f6b38b5592fe33
