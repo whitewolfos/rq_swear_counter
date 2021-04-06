@@ -196,7 +196,7 @@ class ScriptAnalyzer():
                 cur_profane_words = []
                 for word in censored_words:
                     regex_string = regex_string_pattern.format(word)
-                    number_of_occurrences = len(re.findall(regex_string, chunk))
+                    number_of_occurrences = len(re.findall(regex_string, chunk, re.IGNORECASE))
                     cur_profane_words.extend([word] * number_of_occurrences)
 
                 # If a profane word appeared, store the information
@@ -263,7 +263,7 @@ class ScriptAnalyzer():
         END = '\033[0m'
 
         # Initializing variables
-        regex_string_pattern = r'\b{0}\b'
+        regex_string_pattern = r'(?i)\b{0}\b'
         cleaned_file = os.path.splitext(os.path.basename(self.script_filepath))[0]
         print_list = ["=====================\n" + cleaned_file]
 
@@ -283,6 +283,7 @@ class ScriptAnalyzer():
         # Building up the string for printing / saving
         print_list.append("=====================\n=====================")
         print_list.append("Overall Profanity Statistics")
+        print_list.append("Total number of swears: %i" % sum(cur_counter.values()))
         print_list.append("Most profane (# of instances): %s (%i)" % (most_profane[0], most_profane[1]))
         print_list.append("Overall count (# of instances): " + formatted_instances)
         print_list.append("=====================")
@@ -307,8 +308,10 @@ class ScriptAnalyzer():
                 chunk = self.parsed_dict[key][index]
                 for word in set(profanity_info['profane_words'][num]):
                     pattern_string = regex_string_pattern.format(word)
-                    pattern = re.compile(pattern_string, re.IGNORECASE)
-                    chunk = pattern.sub(BOLD + UNDERLINE + word + END, chunk)
+                    profane_instances = re.findall(pattern_string, chunk)
+                    for instance in set(profane_instances):
+                        chunk = chunk.replace(instance,
+                                              BOLD + UNDERLINE + instance + END)
                 print_list.append("-- " + chunk)
 
         # Get the string for printing by combining all of the parts
