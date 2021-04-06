@@ -55,3 +55,4 @@ Argument  | Description
 | `--working_dir`      | Working directory for saving results; default current directory       |
 | `--save_profanity_results`   | Saves .txt file containing profanity results, both overall and separated by text type (e.g. dialogue for each character, episode information, etc.) |
 | `--save_parsed_dict` | Saves dictionary of parsed script data; separates text by dialogue for each character, episode information, content warnings, scene descriptions, and action/sound tags
+| `--save_profanity_dict` | Saves dictionary of profanity data; separates text by dialogue for each character, episode information, content warnings, scene descriptions, and action/sound tags
