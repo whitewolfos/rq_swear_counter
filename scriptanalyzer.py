@@ -312,7 +312,7 @@ class ScriptAnalyzer():
                     profane_instances = re.findall(pattern_string, chunk)
                     for instance in set(profane_instances):
                         pattern = re.compile(regex_string_pattern_case.format(instance))
-                        chunk = pattern.sub(BOLD + UNDERLINE + word + END, chunk)
+                        chunk = pattern.sub(BOLD + UNDERLINE + instance + END, chunk)
                 print_list.append("-- " + chunk)
 
         # Get the string for printing by combining all of the parts
