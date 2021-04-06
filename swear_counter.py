@@ -30,6 +30,11 @@ def main(args: argparse.Namespace):
         with open(os.path.join(args.working_dir, 'parsed_dict.pkl'), 'wb') as file:
             pickle.dump(script.parsed_dict, file)
 
+    # Saving the profanity dictionary, if desired
+    if args.save_profanity_dict:
+        with open(os.path.join(args.working_dir, 'profanity_dict.pkl'), 'wb') as file:
+            pickle.dump(profanity_dict, file)
+
 if __name__ == "__main__":
     # Read in the arguments
     parser = argparse.ArgumentParser(description="Parses the inputted script for swear words")
@@ -77,6 +82,14 @@ if __name__ == "__main__":
         "--save_parsed_dict",
         action="store_true",
         help=("Saves dictionary of parsed script data; separates text by "
+              "dialogue for each character, episode information, content warnings, "
+              "scene descriptions, and action/sound tags")
+    )
+
+    saving.add_argument(
+        "--save_profanity_dict",
+        action="store_true",
+        help=("Saves dictionary of profanity data; separates text by "
               "dialogue for each character, episode information, content warnings, "
               "scene descriptions, and action/sound tags")
     )

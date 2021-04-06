@@ -264,6 +264,7 @@ class ScriptAnalyzer():
 
         # Initializing variables
         regex_string_pattern = r'(?i)\b{0}\b'
+        regex_string_pattern_case = r'\b{0}\b'
         cleaned_file = os.path.splitext(os.path.basename(self.script_filepath))[0]
         print_list = ["=====================\n" + cleaned_file]
 
@@ -310,8 +311,8 @@ class ScriptAnalyzer():
                     pattern_string = regex_string_pattern.format(word)
                     profane_instances = re.findall(pattern_string, chunk)
                     for instance in set(profane_instances):
-                        chunk = chunk.replace(instance,
-                                              BOLD + UNDERLINE + instance + END)
+                        pattern = re.compile(regex_string_pattern_case.format(instance))
+                        chunk = pattern.sub(BOLD + UNDERLINE + word + END, chunk)
                 print_list.append("-- " + chunk)
 
         # Get the string for printing by combining all of the parts
